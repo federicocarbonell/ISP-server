@@ -8,7 +8,7 @@ object ServiceBuilder {
     private val client = OkHttpClient.Builder().build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://10.0.2.2:5001/api/")
+        .baseUrl("https://d846-179-24-57-112.ngrok.io/api/")
         //.baseUrl("http://192.168.235.249:5000/api/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)

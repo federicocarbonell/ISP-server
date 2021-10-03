@@ -22,14 +22,14 @@ class Login : AppCompatActivity() {
         val btn = findViewById(R.id.loginBtn) as Button
 // set on-click listener
         btn.setOnClickListener {
-            validateCredentials()
+            validateCredentials(intent)
         }
     }
 
-    private fun validateCredentials(){
+    private fun validateCredentials(intent: Intent){
         val user = findViewById<View>(R.id.username) as EditText
         val password = findViewById<View>(R.id.password) as EditText
-        if (user.equals("rodrigo") && password.equals("pass")){
+        if (user.text.toString().equals("rodrigo") && password.text.toString().equals("pass")){
             startActivity(intent)
         }else{
             val userTextView: TextView = findViewById(R.id.errors) as TextView
