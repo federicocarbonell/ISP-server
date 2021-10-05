@@ -1,18 +1,16 @@
-package com.example.myapplication
+package com.example.myapplication.Home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.example.myapplication.R
 
 class Home : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        val request = ServiceBuilder.buildService(ApiService::class.java)
+        /*
+        val request = ServiceBuilder.buildService(EmployeeRepository::class.java)
         val call = request.getUsers(1)
         call.enqueue(object : Callback<ApiResponse> {
             override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
@@ -24,6 +22,7 @@ class Home : AppCompatActivity() {
                 val userTextView: TextView = findViewById(R.id.username) as TextView
                 userTextView.text = "Bienvenido, " + t.message;
             }
-        })
+        })d
+         */
     }
 }
