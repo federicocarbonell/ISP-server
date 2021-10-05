@@ -15,24 +15,4 @@
         android:text="HOME"
         android:textSize="30dp"
         android:gravity="center"></TextView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="Rodrigo Bertolotti"
-        android:textSize="30dp"></TextView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="Tareas pendientes: "
-
-        android:textSize="30dp"></TextView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="Tareas finalizadas: "
-
-        android:textSize="30dp"></TextView>
 </LinearLayout>
