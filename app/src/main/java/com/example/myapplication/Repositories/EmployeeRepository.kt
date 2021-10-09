@@ -6,7 +6,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface EmployeeRepository {
-    @POST("employee")
+    @POST("https://10.0.2.2:44349/api/employee")
     fun postLogin(@Body body: UserLogin): Call<ApiResponse>
 }
 

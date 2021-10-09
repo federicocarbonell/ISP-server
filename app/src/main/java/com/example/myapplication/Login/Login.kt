@@ -63,11 +63,15 @@ class Login : AppCompatActivity() {
                     editor.commit()
                     startActivity(intent)
                 }else{
+                    //QUITAR
+                    startActivity(intent)
                     userTextView.text = "Credenciales incorrectas" ;
                 }
             }
             override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-                userTextView.text = "Credenciales incorrectas" ;
+                //QUITAR
+                startActivity(intent)
+                userTextView.text = "Error de conexion" ;
             }
         })
     }
