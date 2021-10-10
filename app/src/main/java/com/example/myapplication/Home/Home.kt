@@ -21,13 +21,13 @@ class Home : AppCompatActivity() {
 
     private var layoutManagerDoing: RecyclerView.LayoutManager? = null
     private var adapterDoing: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
-    /*
+
     private var layoutManagerToDo: RecyclerView.LayoutManager? = null
     private var adapterToDo: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
 
     private var layoutManagerDone: RecyclerView.LayoutManager? = null
     private var adapterDone: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
-    */
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,19 +42,19 @@ class Home : AppCompatActivity() {
         doingView.layoutManager = layoutManagerDoing
         adapterDoing = RecyclerAdapter(titles) //Constructor
         doingView.adapter = adapterDoing
-        /*
+
         val toDoView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.toDoJobs) as androidx.recyclerview.widget.RecyclerView
         layoutManagerToDo = LinearLayoutManager(this)
-        doingView.layoutManager = layoutManagerToDo
-        adapterToDo = RecyclerAdapter()
-        doingView.adapter = adapterToDo
+        toDoView.layoutManager = layoutManagerToDo
+        adapterToDo = RecyclerAdapter(titles)
+        toDoView.adapter = adapterToDo
 
         val doneView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doneJobs) as androidx.recyclerview.widget.RecyclerView
         layoutManagerDone = LinearLayoutManager(this)
-        doingView.layoutManager = layoutManagerDone
-        adapterDone = RecyclerAdapter()
-        doingView.adapter = adapterDone
-         */
+        doneView.layoutManager = layoutManagerDone
+        adapterDone = RecyclerAdapter(titles)
+        doneView.adapter = adapterDone
+
     }
 
 
