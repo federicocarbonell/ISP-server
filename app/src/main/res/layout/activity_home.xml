@@ -16,43 +16,43 @@
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:text="HOME"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="Tareas en proceso:"
-            android:textSize="30dp"/>
+            android:textSize="15dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/doingJobs"
             android:layout_width="match_parent"
-            android:layout_height="300dp"/>
+            android:layout_height="200dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="Tareas pendientes:"
-            android:textSize="30dp"/>
+            android:textSize="15dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/toDoJobs"
             android:layout_width="match_parent"
-            android:layout_height="300dp"/>
+            android:layout_height="200dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:text="Tareas realizadas:"
-            android:textSize="30dp"/>
+            android:textSize="15dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/doneJobs"
             android:layout_width="match_parent"
-            android:layout_height="300dp"/>
+            android:layout_height="200dp"/>
     </LinearLayout>
 </ScrollView>
