@@ -18,9 +18,15 @@ import retrofit2.Response
 
 class Home : AppCompatActivity() {
 
-    private var layoutManager: RecyclerView.LayoutManager? = null
-    private var adapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
+    private var layoutManagerDoing: RecyclerView.LayoutManager? = null
+    private var adapterDoing: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
+    /*
+    private var layoutManagerToDo: RecyclerView.LayoutManager? = null
+    private var adapterToDo: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
 
+    private var layoutManagerDone: RecyclerView.LayoutManager? = null
+    private var adapterDone: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
+    */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +37,23 @@ class Home : AppCompatActivity() {
         userTextView.text = "Bienvenido, " + userName
 
         val doingView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doingJobs) as androidx.recyclerview.widget.RecyclerView
-        layoutManager = LinearLayoutManager(this)
-        doingView.layoutManager = layoutManager
-        adapter = RecyclerAdapter()
-        doingView.adapter = adapter
+        layoutManagerDoing = LinearLayoutManager(this)
+        doingView.layoutManager = layoutManagerDoing
+        adapterDoing = RecyclerAdapter()
+        doingView.adapter = adapterDoing
+        /*
+        val toDoView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.toDoJobs) as androidx.recyclerview.widget.RecyclerView
+        layoutManagerToDo = LinearLayoutManager(this)
+        doingView.layoutManager = layoutManagerToDo
+        adapterToDo = RecyclerAdapter()
+        doingView.adapter = adapterToDo
+
+        val doneView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doneJobs) as androidx.recyclerview.widget.RecyclerView
+        layoutManagerDone = LinearLayoutManager(this)
+        doingView.layoutManager = layoutManagerDone
+        adapterDone = RecyclerAdapter()
+        doingView.adapter = adapterDone
+         */
     }
 
 
