@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +8,6 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context=".Home.Home">
-
     <TextView
         android:id="@+id/username"
         android:layout_width="match_parent"
@@ -17,52 +17,18 @@
         android:textSize="30dp"
         android:gravity="center"/>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="fill_parent" android:orientation="vertical" >
-        <LinearLayout android:id="@+id/ll1" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:layout_margin="20dp"
-                android:text="Tareas en proceso:"
-                android:textSize="40dp"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/doingJobs"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-        <LinearLayout android:id="@+id/ll2" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:layout_margin="20dp"
-                android:text="Tareas pendientes:"
-                android:textSize="40dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:layout_margin="20dp"
+        android:text="Tareas en proceso:"
+        android:textSize="40dp"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/toDoJobs"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-        <LinearLayout android:id="@+id/ll3" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:layout_margin="20dp"
-                android:text="Tareas realizadas:"
-                android:textSize="40dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/doneJobs"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/doingJobs"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"/>
 
 </LinearLayout>

@@ -17,6 +17,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class Home : AppCompatActivity() {
+    val titles = arrayOf("Heladera Samsung", "Heladera Panasonic")
 
     private var layoutManagerDoing: RecyclerView.LayoutManager? = null
     private var adapterDoing: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
@@ -39,7 +40,7 @@ class Home : AppCompatActivity() {
         val doingView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doingJobs) as androidx.recyclerview.widget.RecyclerView
         layoutManagerDoing = LinearLayoutManager(this)
         doingView.layoutManager = layoutManagerDoing
-        adapterDoing = RecyclerAdapter()
+        adapterDoing = RecyclerAdapter(titles) //Constructor
         doingView.adapter = adapterDoing
         /*
         val toDoView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.toDoJobs) as androidx.recyclerview.widget.RecyclerView
