@@ -19,6 +19,8 @@ import retrofit2.Response
 class Home : AppCompatActivity() {
     val titles = arrayOf("Heladera Samsung", "Heladera Panasonic")
 
+    val jobsDoing: Array<Job>? = null
+
     private var layoutManagerDoing: RecyclerView.LayoutManager? = null
     private var adapterDoing: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
 
@@ -37,6 +39,9 @@ class Home : AppCompatActivity() {
         val userTextView: TextView = findViewById(R.id.username) as TextView
         userTextView.text = "Bienvenido, " + userName
 
+        getPendingJobs(this);
+        /*
+
         val doingView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doingJobs) as androidx.recyclerview.widget.RecyclerView
         layoutManagerDoing = LinearLayoutManager(this)
         doingView.layoutManager = layoutManagerDoing
@@ -54,16 +59,24 @@ class Home : AppCompatActivity() {
         doneView.layoutManager = layoutManagerDone
         adapterDone = RecyclerAdapter(titles)
         doneView.adapter = adapterDone
+        */
+    }
 
+    private fun populateDoingJobs(context: Context, jobs: Array<Job>?){
+        val doingView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doingJobs) as androidx.recyclerview.widget.RecyclerView
+        layoutManagerDoing = LinearLayoutManager(context)
+        doingView.layoutManager = layoutManagerDoing
+        adapterDoing = RecyclerAdapter(jobs) //Constructor
+        doingView.adapter = adapterDoing
     }
 
 
-    private fun getPendingJobs(intent: Intent){
+    private fun getPendingJobs(context: Context){
         val request = ServiceBuilder.buildService(JobRepository::class.java)
         val call = request.getPendingJobs(1);
         call.enqueue(object: Callback<Array<Job>> {
             override fun onResponse(call: Call<Array<Job>>, response: Response<Array<Job>>) {
-                val log = response
+                populateDoingJobs(context, response.body());
             }
 
             override fun onFailure(call: Call<Array<Job>>, t: Throwable) {
