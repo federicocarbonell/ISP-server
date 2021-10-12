@@ -70,13 +70,57 @@ class Home : AppCompatActivity() {
         doingView.adapter = adapterDoing
     }
 
+    private fun populateToDoJobs(context: Context, jobs: Array<Job>?){
+        val toDoView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.toDoJobs) as androidx.recyclerview.widget.RecyclerView
+        layoutManagerToDo = LinearLayoutManager(context)
+        toDoView.layoutManager = layoutManagerToDo
+        adapterToDo = RecyclerAdapter(jobs)
+        toDoView.adapter = adapterToDo
+    }
+
+    private fun populateDoneJobs(context: Context, jobs: Array<Job>?){
+        val doneView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doneJobs) as androidx.recyclerview.widget.RecyclerView
+        layoutManagerDone = LinearLayoutManager(context)
+        doneView.layoutManager = layoutManagerDone
+        adapterDone = RecyclerAdapter(jobs)
+        doneView.adapter = adapterDone
+    }
+
 
     private fun getPendingJobs(context: Context){
         val request = ServiceBuilder.buildService(JobRepository::class.java)
         val call = request.getPendingJobs(1);
         call.enqueue(object: Callback<Array<Job>> {
             override fun onResponse(call: Call<Array<Job>>, response: Response<Array<Job>>) {
+                populateToDoJobs(context, response.body());
+            }
+
+            override fun onFailure(call: Call<Array<Job>>, t: Throwable) {
+                val log = "All wrong"
+            }
+        })
+    }
+
+    private fun getInProcessJobs(context: Context){
+        val request = ServiceBuilder.buildService(JobRepository::class.java)
+        val call = request.getPendingJobs(1); //CAMBIAR
+        call.enqueue(object: Callback<Array<Job>> {
+            override fun onResponse(call: Call<Array<Job>>, response: Response<Array<Job>>) {
                 populateDoingJobs(context, response.body());
+            }
+
+            override fun onFailure(call: Call<Array<Job>>, t: Throwable) {
+                val log = "All wrong"
+            }
+        })
+    }
+
+    private fun getCompletedJobs(context: Context){
+        val request = ServiceBuilder.buildService(JobRepository::class.java)
+        val call = request.getPendingJobs(1); //CAMBIAR
+        call.enqueue(object: Callback<Array<Job>> {
+            override fun onResponse(call: Call<Array<Job>>, response: Response<Array<Job>>) {
+                populateDoneJobs(context, response.body());
             }
 
             override fun onFailure(call: Call<Array<Job>>, t: Throwable) {
