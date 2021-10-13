@@ -18,7 +18,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class Home : AppCompatActivity() {
-
     private var layoutManagerDoing: RecyclerView.LayoutManager? = null
     private var adapterDoing: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
 
@@ -71,7 +70,7 @@ class Home : AppCompatActivity() {
         }
     }
 
-    private fun populateDoneJobs(context: Context, jobs: Array<Job>?){
+    private fun populateFinishedJobs(context: Context, jobs: Array<Job>?){
         val doneView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doneJobs) as androidx.recyclerview.widget.RecyclerView
         if(jobs == null){
             doneView.setVisibility(View.GONE)
@@ -111,7 +110,7 @@ class Home : AppCompatActivity() {
 
     private fun getInProcessJobs(context: Context){
         val request = ServiceBuilder.buildService(JobRepository::class.java)
-        val call = request.getPendingJobs(idUser); //CAMBIAR
+        val call = request.getInProcessJobs(idUser);
         call.enqueue(object: Callback<Array<Job>> {
             val doingTextView: TextView = findViewById(R.id.notDoingJobs) as TextView
             override fun onResponse(call: Call<Array<Job>>, response: Response<Array<Job>>) {
@@ -134,18 +133,18 @@ class Home : AppCompatActivity() {
         })
     }
 
-    private fun getCompletedJobs(context: Context){
+    private fun getFinishedJobs(context: Context){
         val request = ServiceBuilder.buildService(JobRepository::class.java)
-        val call = request.getPendingJobs(idUser); //CAMBIAR
+        val call = request.getFinishedJobs(idUser);
         call.enqueue(object: Callback<Array<Job>> {
             val DoneTextView: TextView = findViewById(R.id.notDoneJobs) as TextView
             override fun onResponse(call: Call<Array<Job>>, response: Response<Array<Job>>) {
                 if(response.code() == 200){
                     DoneTextView.setVisibility(View.GONE)
-                    populateDoneJobs(context, response.body())
+                    populateFinishedJobs(context, response.body())
                 }
                 else{
-                    populateDoneJobs(context,null)
+                    populateFinishedJobs(context,null)
                     DoneTextView.setVisibility(View.VISIBLE)
                     DoneTextView.text = "No tiene tareas terminadas."
                 }
@@ -158,6 +157,4 @@ class Home : AppCompatActivity() {
             }
         })
     }
-
-
 }
