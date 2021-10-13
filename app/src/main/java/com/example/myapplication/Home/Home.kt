@@ -17,10 +17,6 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class Home : AppCompatActivity() {
-    val titles = arrayOf("Heladera Samsung", "Heladera Panasonic")
-
-    val jobsDoing: Array<Job>? = null
-
     private var layoutManagerDoing: RecyclerView.LayoutManager? = null
     private var adapterDoing: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
 
@@ -30,7 +26,6 @@ class Home : AppCompatActivity() {
     private var layoutManagerDone: RecyclerView.LayoutManager? = null
     private var adapterDone: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -39,27 +34,9 @@ class Home : AppCompatActivity() {
         val userTextView: TextView = findViewById(R.id.username) as TextView
         userTextView.text = "Bienvenido, " + userName
 
-        getPendingJobs(this);
-        /*
-
-        val doingView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doingJobs) as androidx.recyclerview.widget.RecyclerView
-        layoutManagerDoing = LinearLayoutManager(this)
-        doingView.layoutManager = layoutManagerDoing
-        adapterDoing = RecyclerAdapter(titles) //Constructor
-        doingView.adapter = adapterDoing
-
-        val toDoView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.toDoJobs) as androidx.recyclerview.widget.RecyclerView
-        layoutManagerToDo = LinearLayoutManager(this)
-        toDoView.layoutManager = layoutManagerToDo
-        adapterToDo = RecyclerAdapter(titles)
-        toDoView.adapter = adapterToDo
-
-        val doneView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doneJobs) as androidx.recyclerview.widget.RecyclerView
-        layoutManagerDone = LinearLayoutManager(this)
-        doneView.layoutManager = layoutManagerDone
-        adapterDone = RecyclerAdapter(titles)
-        doneView.adapter = adapterDone
-        */
+        getPendingJobs(this)
+        getInProcessJobs(this)
+        getFinishedJobs(this)
     }
 
     private fun populateDoingJobs(context: Context, jobs: Array<Job>?){
@@ -78,14 +55,13 @@ class Home : AppCompatActivity() {
         toDoView.adapter = adapterToDo
     }
 
-    private fun populateDoneJobs(context: Context, jobs: Array<Job>?){
+    private fun populateFinishedJobs(context: Context, jobs: Array<Job>?){
         val doneView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.doneJobs) as androidx.recyclerview.widget.RecyclerView
         layoutManagerDone = LinearLayoutManager(context)
         doneView.layoutManager = layoutManagerDone
         adapterDone = RecyclerAdapter(jobs)
         doneView.adapter = adapterDone
     }
-
 
     private fun getPendingJobs(context: Context){
         val request = ServiceBuilder.buildService(JobRepository::class.java)
@@ -103,7 +79,7 @@ class Home : AppCompatActivity() {
 
     private fun getInProcessJobs(context: Context){
         val request = ServiceBuilder.buildService(JobRepository::class.java)
-        val call = request.getPendingJobs(1); //CAMBIAR
+        val call = request.getInProcessJobs(1); //CAMBIAR
         call.enqueue(object: Callback<Array<Job>> {
             override fun onResponse(call: Call<Array<Job>>, response: Response<Array<Job>>) {
                 populateDoingJobs(context, response.body());
@@ -115,12 +91,12 @@ class Home : AppCompatActivity() {
         })
     }
 
-    private fun getCompletedJobs(context: Context){
+    private fun getFinishedJobs(context: Context){
         val request = ServiceBuilder.buildService(JobRepository::class.java)
-        val call = request.getPendingJobs(1); //CAMBIAR
+        val call = request.getFinishedJobs(1); //CAMBIAR
         call.enqueue(object: Callback<Array<Job>> {
             override fun onResponse(call: Call<Array<Job>>, response: Response<Array<Job>>) {
-                populateDoneJobs(context, response.body());
+                populateFinishedJobs(context, response.body());
             }
 
             override fun onFailure(call: Call<Array<Job>>, t: Throwable) {
@@ -128,6 +104,4 @@ class Home : AppCompatActivity() {
             }
         })
     }
-
-
 }
