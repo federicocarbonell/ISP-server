@@ -63,6 +63,7 @@ class Login : AppCompatActivity() {
                     val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
                     var editor = sharedPreference.edit()
                     editor.putString("username",response.body()?.name.toString())
+                    editor.putInt("userId", response.body()?.id!!.toInt())
                     editor.commit()
                     startActivity(intent)
                 }else{

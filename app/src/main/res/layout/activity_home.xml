@@ -26,6 +26,13 @@
             android:text="Tareas en proceso:"
             android:textSize="15dp"/>
 
+        <TextView
+            android:id="@+id/notDoingJobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="15dp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/doingJobs"
             android:layout_width="match_parent"
@@ -38,6 +45,13 @@
             android:text="Tareas pendientes:"
             android:textSize="15dp"/>
 
+        <TextView
+            android:id="@+id/notToDoJobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="15dp"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/toDoJobs"
             android:layout_width="match_parent"
@@ -48,6 +62,13 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Tareas realizadas:"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/notDoneJobs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:textSize="15dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
