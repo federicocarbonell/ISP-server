@@ -41,7 +41,7 @@ class Home : AppCompatActivity() {
 
         getPendingJobs(this);
         getInProcessJobs(this);
-        getCompletedJobs(this);
+        getFinishedJobs(this);
     }
 
     private fun populateDoingJobs(context: Context, jobs: Array<Job>?){
@@ -151,7 +151,7 @@ class Home : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Array<Job>>, t: Throwable) {
-                populateDoneJobs(context,null)
+                populateFinishedJobs(context,null)
                 DoneTextView.setVisibility(View.VISIBLE)
                 DoneTextView.text = "Imposible cargar las tareas"
             }
