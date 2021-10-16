@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Job
+import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.R
 import com.example.myapplication.Repositories.JobRepository
 import com.example.myapplication.ServiceBuilder
@@ -43,17 +44,10 @@ class Home : AppCompatActivity() {
     }
 
     fun openDetails(v: View?){
-        val name = v?.getTag(0).toString()
-        //val description = v?.getTag(1).toString()
-        //val state = v?.getTag(2).toString()
-        //val latitude = v?.getTag(3).toString()
-        //val longitude = v?.getTag(4).toString()
+        val job = v?.getTag() as Job
+        val jobDetail = JobDetail(job.product.name,job.description, job.state, job.latitude, job.longitude);
         val intent = Intent(this, TaskDetails::class.java)
-        intent.putExtra("nombre",name)
-        //intent.putExtra("description",description)
-        //intent.putExtra("state",state)
-        //intent.putExtra("latitude",latitude)
-        //intent.putExtra("longitude",longitude)
+        intent.putExtra("product",jobDetail)
         startActivity(intent)
     }
 

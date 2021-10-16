@@ -21,11 +21,7 @@ class RecyclerAdapter(private val dataSet: Array<Job>?): RecyclerView.Adapter<Re
         //Cuando tenga el array de objetos decirle que parte del objeto quiero mostrar.
         holder.itemTitle.text = dataSet?.get(position)?.product?.name
         holder.itemDescription.text = dataSet?.get(position)?.description
-        holder.button.setTag( dataSet?.get(position)?.product?.name.toString())
-        //holder.button.setTag(1, dataSet?.get(position)?.description.toString())
-        //holder.button.setTag(2, dataSet?.get(position)?.state.toString())
-        //holder.button.setTag(3, dataSet?.get(position)?.latitud.toString())
-        //holder.button.setTag(4, dataSet?.get(position)?.longitude.toString())
+        holder.button.setTag(dataSet?.get(position))
     }
 
     override fun getItemCount(): Int {

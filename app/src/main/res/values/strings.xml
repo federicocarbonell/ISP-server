@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Voyage</string>
     <string-array name="task_states">
-        <item>endiente</item>
-        <item>en progreso</item>
-        <item>finalizada</item>
+        <item>Pendiente</item>
+        <item>En Progreso</item>
+        <item>Finalizada</item>
     </string-array>
 </resources>

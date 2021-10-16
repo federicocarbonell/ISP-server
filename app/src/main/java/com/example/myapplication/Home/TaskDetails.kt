@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.example.myapplication.R
 import android.widget.*
+import com.example.myapplication.Models.JobDetail
+import java.lang.Integer.parseInt
 
 class TaskDetails : AppCompatActivity() {
     var options = arrayOf("Pendiente", "En proceso", "Terminada")
@@ -16,19 +18,16 @@ class TaskDetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_details)
         var bundle: Bundle ?= intent.extras
-        var name = bundle!!.getString("nombre")
+        // TODO: Cuando se agregen las demas properties ajustar.
+        var job = bundle?.get("product") as JobDetail
         val titleText: TextView = findViewById(R.id.title) as TextView
-        titleText.text = name
-        //var description = bundle!!.getString("description")
-        //var state = bundle!!.getString("state")
-        //var latitud = bundle!!.getString("latitud")
-        //var longitude = bundle!!.getString("longitude")
-        //val titleText: TextView = findViewById(R.id.title) as TextView
-        //titleText.text = name
-        //val descriptionText: TextView = findViewById(R.id.description) as TextView
-        //descriptionText.text = description
-        //val latitudeText: TextView = findViewById(R.id.latitude) as TextView
-        //latitudeText.text = longitude
+        titleText.text = job.name
+        val descriptionText: TextView = findViewById(R.id.description) as TextView
+        descriptionText.text = job.description
+        val latitudeText: TextView = findViewById(R.id.latitude) as TextView
+        latitudeText.text = job.latitude.toString()
+        //val longitudeText: TextView = findViewById(R.id.longitud) as TextView
+        //longitudeText.text = job.longitud.toString()
         spinner = findViewById(R.id.spinner)
         val adapter = ArrayAdapter.createFromResource(
             this,
@@ -38,6 +37,7 @@ class TaskDetails : AppCompatActivity() {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner?.setAdapter(adapter)
+        spinner?.setSelection(parseInt(job.state.toString()));
         spinner?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
