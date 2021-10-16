@@ -23,13 +23,14 @@ import android.view.inputmethod.InputMethodManager
 import com.example.myapplication.Job
 import com.example.myapplication.Repositories.JobRepository
 import com.example.myapplication.UserLogged
+import com.example.myapplication.Home.TaskDetails
 
 
 class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val intent = Intent(this, Home::class.java)
+        val intent = Intent(this, TaskDetails::class.java)
         // get reference to button
         val btn = findViewById(R.id.loginBtn) as Button
         val user = findViewById<View>(R.id.username) as EditText
