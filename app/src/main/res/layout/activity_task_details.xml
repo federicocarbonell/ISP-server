@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusableInTouchMode="true" >
+
+    <TextView
+        android:layout_width="319dp"
+        android:layout_height="98dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="20sp"
+        android:fontWeight="700"
+        android:text="Heladera Samsung"
+        android:textSize="30dp"></TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_placeholder__1_" />
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:padding="6sp"
+
+        android:text="18 de Julio 2232"
+        android:gravity="left">
+    </TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:padding="6sp"
+        android:fontWeight="700"
+        android:text="Descripcion"
+        android:gravity="left">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:padding="6sp"
+
+        android:text="Alguna descricion del reoducto que sea un oco mas larga que un texto nromal"
+        android:gravity="left">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:padding="6sp"
+        android:text="Estado"
+        android:fontWeight="700"
+        android:gravity="left">
+    </TextView>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/change"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="20dp"
+            android:gravity="center">
+        </TextView>
+    </LinearLayout>
+</LinearLayout>

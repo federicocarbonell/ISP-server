@@ -7,7 +7,6 @@ import android.widget.TextView
 import com.example.myapplication.R
 
 class Home : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
