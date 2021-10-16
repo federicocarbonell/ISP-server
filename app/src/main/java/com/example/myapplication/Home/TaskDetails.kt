@@ -1,5 +1,6 @@
 package com.example.myapplication.Home
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,6 +15,20 @@ class TaskDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_details)
+        var bundle: Bundle ?= intent.extras
+        var name = bundle!!.getString("nombre")
+        val titleText: TextView = findViewById(R.id.title) as TextView
+        titleText.text = name
+        //var description = bundle!!.getString("description")
+        //var state = bundle!!.getString("state")
+        //var latitud = bundle!!.getString("latitud")
+        //var longitude = bundle!!.getString("longitude")
+        //val titleText: TextView = findViewById(R.id.title) as TextView
+        //titleText.text = name
+        //val descriptionText: TextView = findViewById(R.id.description) as TextView
+        //descriptionText.text = description
+        //val latitudeText: TextView = findViewById(R.id.latitude) as TextView
+        //latitudeText.text = longitude
         spinner = findViewById(R.id.spinner)
         val adapter = ArrayAdapter.createFromResource(
             this,
