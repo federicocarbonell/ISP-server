@@ -45,7 +45,7 @@ class Home : AppCompatActivity() {
 
     fun openDetails(v: View?){
         val job = v?.getTag() as Job
-        val jobDetail = JobDetail(job.product.name,job.description, job.state, job.latitude, job.longitude);
+        val jobDetail = JobDetail(job.id,job.product.name,job.description, job.state, job.latitude, job.longitude);
         val intent = Intent(this, TaskDetails::class.java)
         intent.putExtra("product",jobDetail)
         startActivity(intent)

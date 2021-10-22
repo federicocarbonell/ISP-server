@@ -1,6 +1,5 @@
 package com.example.myapplication.Home
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,18 +7,26 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.example.myapplication.R
 import android.widget.*
+import com.example.myapplication.Job
 import com.example.myapplication.Models.JobDetail
+import com.example.myapplication.Repositories.JobRepository
+import com.example.myapplication.ServiceBuilder
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.io.IOException
 import java.lang.Integer.parseInt
 
 class TaskDetails : AppCompatActivity() {
     var options = arrayOf("Pendiente", "En proceso", "Terminada")
     var spinner:Spinner? = null
+    lateinit var job: JobDetail;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_details)
         var bundle: Bundle ?= intent.extras
         // TODO: Cuando se agregen las demas properties ajustar.
-        var job = bundle?.get("product") as JobDetail
+        job = bundle?.get("product") as JobDetail
         val titleText: TextView = findViewById(R.id.title) as TextView
         titleText.text = job.name
         val descriptionText: TextView = findViewById(R.id.description) as TextView
@@ -45,8 +52,22 @@ class TaskDetails : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                userTextView.text = "Selected: " + position.toString()
                 // get selected item text
+                if (job.state != Integer(position.toString())) {
+                    val request = ServiceBuilder.buildService(JobRepository::class.java)
+                    job.state = Integer(position)
+                    val call = request.updateJobState(job.id, job);
+                    call.enqueue(object : Callback<Void> {
+                        override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                            userTextView.text = "Status updated."
+                        }
+
+                        override fun onFailure(call: Call<Void>, t: Throwable) {
+                            TODO("Not yet implemented")
+                        }
+
+                    })
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
