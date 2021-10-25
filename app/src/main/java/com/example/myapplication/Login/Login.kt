@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import com.example.myapplication.ApiResponse
 import com.example.myapplication.Home.Home
 import com.example.myapplication.Models.UserLogin
 import com.example.myapplication.R
@@ -21,6 +20,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.view.View.OnFocusChangeListener
 import android.view.inputmethod.InputMethodManager
+import com.example.myapplication.Job
+import com.example.myapplication.Repositories.JobRepository
+import com.example.myapplication.UserLogged
+import com.example.myapplication.Home.TaskDetails
 
 
 class Login : AppCompatActivity() {
@@ -48,26 +51,28 @@ class Login : AppCompatActivity() {
         }
     }
 
+
     private fun validateCredentials(intent: Intent){
         val user = findViewById<View>(R.id.username) as EditText
         val password = findViewById<View>(R.id.password) as EditText
         val request = ServiceBuilder.buildService(EmployeeRepository::class.java)
         val call = request.postLogin(UserLogin(user.text.toString(),password.text.toString()))
         val userTextView: TextView = findViewById(R.id.errors) as TextView
-        call.enqueue(object : Callback<ApiResponse> {
-            override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
+        call.enqueue(object : Callback<UserLogged> {
+            override fun onResponse(call: Call<UserLogged>, response: Response<UserLogged>) {
                 if (response.body()?.id != null){
                     val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
                     var editor = sharedPreference.edit()
                     editor.putString("username",response.body()?.name.toString())
+                    editor.putInt("userId", response.body()?.id!!.toInt())
                     editor.commit()
                     startActivity(intent)
                 }else{
                     userTextView.text = "Credenciales incorrectas" ;
                 }
             }
-            override fun onFailure(call: Call<ApiResponse>, t: Throwable) {
-                userTextView.text = "Credenciales incorrectas" ;
+            override fun onFailure(call: Call<UserLogged>, t: Throwable) {
+                userTextView.text = "Error de conexion" ;
             }
         })
     }

@@ -13,7 +13,10 @@
             android:name=".Home.Home"
             android:exported="true" />
         <activity
-            android:name=".Login.Login"
+            android:name=".Home.TaskDetails"
+            android:exported="true" />
+        <activity
+            android:name="com.example.myapplication.Login.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
