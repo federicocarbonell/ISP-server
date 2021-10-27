@@ -85,4 +85,5 @@
             android:gravity="center">
         </TextView>
     </LinearLayout>
+    <include layout="@layout/footer"></include>
 </LinearLayout>
