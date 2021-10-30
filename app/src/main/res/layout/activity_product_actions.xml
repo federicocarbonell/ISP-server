@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusableInTouchMode="true" >
+    <TextView
+    android:id="@+id/productName"
+    android:layout_width="319dp"
+    android:layout_height="98dp"
+    android:gravity="center"
+    android:padding="10sp"
+    android:fontWeight="700"
+    android:textSize="30dp"></TextView>
+    <TextView
+        android:id="@+id/productId"
+        android:layout_width="319dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:padding="2sp"
+        android:fontWeight="700"
+        android:textSize="25dp"></TextView>
+    <TextView
+        android:id="@+id/productYear"
+        android:layout_width="319dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:padding="2sp"
+        android:fontWeight="700"
+        android:textSize="25dp"></TextView>
+
+    <Button
+        android:id="@+id/buttonHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Ver historial de tareas"
+        android:onClick="scanQr"
+        />
+    <Button
+        android:id="@+id/buttonUploadReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Cargar reporte"
+        android:onClick="scanQr"
+        />
+</LinearLayout>

@@ -14,6 +14,7 @@ import com.example.myapplication.Job
 import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.R
 import com.example.myapplication.Repositories.JobRepository
+import com.example.myapplication.Scan.Scan
 import com.example.myapplication.ServiceBuilder
 import retrofit2.Call
 import retrofit2.Callback
@@ -43,6 +44,12 @@ class Home : AppCompatActivity() {
         getInProcessJobs(this);
         getFinishedJobs(this);
     }
+
+    fun scanQr(v: View?){
+        val intent = Intent(this, Scan::class.java)
+        startActivity(intent)
+    }
+
 
     fun openDetails(v: View?){
         val job = v?.getTag() as Job
