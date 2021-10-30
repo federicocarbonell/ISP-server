@@ -48,7 +48,7 @@ class Scan : AppCompatActivity() {
 
         codescanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-                Toast.makeText(this, "Product scanned successfully.", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Product scanned successfully.", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, ProductActions::class.java)
                 intent.putExtra("productId",parseInt(it.text))
                 startActivity(intent)

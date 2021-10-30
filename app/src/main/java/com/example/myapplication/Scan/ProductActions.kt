@@ -3,10 +3,10 @@ package com.example.myapplication.Scan
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import android.widget.Toast
 import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.Product
 import com.example.myapplication.R
-import com.example.myapplication.Repositories.JobRepository
 import com.example.myapplication.Repositories.ProductRepository
 import com.example.myapplication.ServiceBuilder
 import retrofit2.Call
@@ -27,7 +27,11 @@ class ProductActions : AppCompatActivity() {
         val call = request.getProductInfo(id);
         call.enqueue(object : Callback<Product>{
             override fun onResponse(call: Call<Product>, response: Response<Product>) {
-                chargeProductInfo(response.body() as Product)
+                if (response.raw().code() == 404) {
+                    showError();
+                } else {
+                    chargeProductInfo(response.body() as Product)
+                }
             }
 
             override fun onFailure(call: Call<Product>, t: Throwable) {
@@ -36,6 +40,11 @@ class ProductActions : AppCompatActivity() {
             }
 
         })
+    }
+
+    fun showError(){
+        Toast.makeText(this, "An error has occurred", Toast.LENGTH_LONG).show()
+        this.finish();
     }
 
     fun chargeProductInfo(product: Product){
