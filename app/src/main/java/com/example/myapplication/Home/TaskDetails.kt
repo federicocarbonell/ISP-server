@@ -61,11 +61,11 @@ class TaskDetails : AppCompatActivity() {
                     val call = request.updateJobState(job.id, job);
                     call.enqueue(object : Callback<Void> {
                         override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                            userTextView.text = "Status updated."
+                            userTextView.text = "Estado actualizado correctamente."
                         }
 
                         override fun onFailure(call: Call<Void>, t: Throwable) {
-                            TODO("Not yet implemented")
+                            userTextView.text = "Ocurrio un error al actualizar el estado."
                         }
 
                     })
@@ -73,7 +73,6 @@ class TaskDetails : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
             }
         }
 
