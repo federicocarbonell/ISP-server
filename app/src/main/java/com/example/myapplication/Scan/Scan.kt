@@ -10,9 +10,6 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.budiyev.android.codescanner.*
-import com.example.myapplication.Home.TaskDetails
-import com.example.myapplication.Job
-import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.R
 import java.lang.Integer.parseInt
 
@@ -57,7 +54,7 @@ class Scan : AppCompatActivity() {
 
         codescanner.errorCallback = ErrorCallback {
             runOnUiThread {
-                Toast.makeText(this, "Camera initialization error: ${it.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Problema al inicializar la cámara: ${it.message}", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -74,10 +71,10 @@ class Scan : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == 123){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Toast.makeText(this, "Camera permission granted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Permisos de cámara otorgados.", Toast.LENGTH_SHORT).show()
                 startScanning()
             }else{
-                Toast.makeText(this, "Camera permission denied", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Permisos de cámara denegados.", Toast.LENGTH_SHORT).show()
             }
         }
     }

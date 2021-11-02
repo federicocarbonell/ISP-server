@@ -16,14 +16,6 @@
         android:layout_weight="1"
         android:gravity="center_horizontal"
         tools:context=".Home.Home">
-        <Button
-            android:id="@+id/buttonScan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Escanear codigo QR"
-            android:onClick="scanQr"
-        />
         <TextView
             android:id="@+id/username"
             android:layout_width="match_parent"

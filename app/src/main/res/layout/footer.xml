@@ -12,14 +12,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="30dp"
-            android:onClick="navigateHome"
             android:src="@drawable/ic_icons8_camera" />
         <ImageButton
             android:id="@+id/btnCamera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:onClick="navigateHome"
             android:layout_marginRight="30dp"
             android:src="@drawable/ic_icons8_home" />
     </RelativeLayout>
