@@ -11,6 +11,7 @@ import android.widget.*
 import com.example.myapplication.Job
 import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.Repositories.JobRepository
+import com.example.myapplication.Scan.Scan
 import com.example.myapplication.ServiceBuilder
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
@@ -78,6 +79,7 @@ class TaskDetails : AppCompatActivity() {
 
         val bottom_navigation: BottomNavigationView = findViewById(R.id.bottom_navigation) as BottomNavigationView
         val intentHome = Intent(this, Home::class.java)
+        val intentScan = Intent(this, Scan::class.java)
 
         bottom_navigation.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
@@ -86,7 +88,7 @@ class TaskDetails : AppCompatActivity() {
                     true
                 }
                 R.id.camera -> {
-                    startActivity(intentHome);
+                    startActivity(intentScan);
                     true
                 }
                 else -> false

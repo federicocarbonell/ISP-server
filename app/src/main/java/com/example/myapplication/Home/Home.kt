@@ -10,11 +10,14 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Footer.Footer
 import com.example.myapplication.Job
 import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.R
 import com.example.myapplication.Repositories.JobRepository
+import com.example.myapplication.Scan.Scan
 import com.example.myapplication.ServiceBuilder
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,6 +45,25 @@ class Home : AppCompatActivity() {
         getPendingJobs(this);
         getInProcessJobs(this);
         getFinishedJobs(this);
+
+
+        val bottom_navigation: BottomNavigationView = findViewById(R.id.bottom_navigation) as BottomNavigationView
+        val intentHome = Intent(this, Home::class.java)
+        val intentScan = Intent(this, Scan::class.java)
+
+        bottom_navigation.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.home -> {
+                    startActivity(intentHome);
+                    true
+                }
+                R.id.camera -> {
+                    startActivity(intentScan);
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     fun openDetails(v: View?){
@@ -164,10 +186,5 @@ class Home : AppCompatActivity() {
                 DoneTextView.text = "Imposible cargar las tareas"
             }
         })
-    }
-
-    fun navigateHome(v: View?) {
-        val intent = Intent(this, Home::class.java)
-        startActivity(intent)
     }
 }
