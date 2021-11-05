@@ -25,17 +25,16 @@
         android:fontWeight="700"
         android:textSize="30dp"></TextView>
     <ImageButton
+        android:id="@+id/mapButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_placeholder__1_" />
     <TextView
-        android:id="@+id/latitude"
+        android:id="@+id/direction"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:padding="6sp"
-
-        android:text="18 de Julio 2232"
         android:gravity="left">
     </TextView>
     </LinearLayout>

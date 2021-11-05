@@ -1,6 +1,7 @@
 package com.example.myapplication.Home
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,7 +9,6 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import com.example.myapplication.R
 import android.widget.*
-import com.example.myapplication.Job
 import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.Repositories.JobRepository
 import com.example.myapplication.Scan.Scan
@@ -17,27 +17,25 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.IOException
 import java.lang.Integer.parseInt
 
 class TaskDetails : AppCompatActivity() {
     var options = arrayOf("Pendiente", "En proceso", "Terminada")
     var spinner:Spinner? = null
+    var mapButton: ImageButton? = null
     lateinit var job: JobDetail;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_details)
         var bundle: Bundle ?= intent.extras
-        // TODO: Cuando se agregen las demas properties ajustar.
+        mapButton = findViewById(R.id.mapButton)
         job = bundle?.get("product") as JobDetail
         val titleText: TextView = findViewById(R.id.title) as TextView
         titleText.text = job.name
         val descriptionText: TextView = findViewById(R.id.description) as TextView
         descriptionText.text = job.description
-        val latitudeText: TextView = findViewById(R.id.latitude) as TextView
-        latitudeText.text = job.latitude.toString()
-        //val longitudeText: TextView = findViewById(R.id.longitud) as TextView
-        //longitudeText.text = job.longitud.toString()
+        val direcitonText: TextView = findViewById(R.id.direction) as TextView
+        direcitonText.text = job.direction.toString()
         spinner = findViewById(R.id.spinner)
         val adapter = ArrayAdapter.createFromResource(
             this,
@@ -93,6 +91,14 @@ class TaskDetails : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+
+        val mapButton = findViewById(R.id.mapButton) as ImageButton
+        mapButton.setOnClickListener{
+            val gmmIntentUri = Uri.parse("geo:0,0?q="+job.direction)
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
         }
     }
 }
