@@ -1,4 +1,4 @@
-package com.example.myapplication.Home
+package com.example.myapplication.History
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Job
 import com.example.myapplication.R
-import com.example.myapplication.Models.Task
+import com.example.myapplication.Report
 
-class RecyclerAdapter(private val dataSet: Array<Job>?): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(private val dataSet: Array<Report>?): RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerAdapter.ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.card_layout, parent, false)
@@ -19,8 +19,8 @@ class RecyclerAdapter(private val dataSet: Array<Job>?): RecyclerView.Adapter<Re
 
     override fun onBindViewHolder(holder: RecyclerAdapter.ViewHolder, position: Int) {
         //Cuando tenga el array de objetos decirle que parte del objeto quiero mostrar.
-        holder.itemTitle.text = "Fecha: " + dataSet?.get(position)?.time
-        holder.itemDescription.text = dataSet?.get(position)?.description
+        holder.itemTitle.text = dataSet?.get(position)?.productName
+        holder.itemDescription.text = dataSet?.get(position)?.summary
         holder.button.setTag(dataSet?.get(position))
     }
 

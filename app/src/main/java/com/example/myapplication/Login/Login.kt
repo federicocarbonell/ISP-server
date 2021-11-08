@@ -58,6 +58,7 @@ class Login : AppCompatActivity() {
         val request = ServiceBuilder.buildService(EmployeeRepository::class.java)
         val call = request.postLogin(UserLogin(user.text.toString(),password.text.toString()))
         val userTextView: TextView = findViewById(R.id.errors) as TextView
+
         call.enqueue(object : Callback<UserLogged> {
             override fun onResponse(call: Call<UserLogged>, response: Response<UserLogged>) {
                 if (response.body()?.id != null){

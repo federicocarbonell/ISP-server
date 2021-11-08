@@ -35,7 +35,7 @@ class TaskDetails : AppCompatActivity() {
         val descriptionText: TextView = findViewById(R.id.description) as TextView
         descriptionText.text = job.description
         val latitudeText: TextView = findViewById(R.id.latitude) as TextView
-        latitudeText.text = job.latitude.toString()
+        latitudeText.text = job.direction.toString()
         //val longitudeText: TextView = findViewById(R.id.longitud) as TextView
         //longitudeText.text = job.longitud.toString()
         spinner = findViewById(R.id.spinner)

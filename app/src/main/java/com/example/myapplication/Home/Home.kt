@@ -68,7 +68,7 @@ class Home : AppCompatActivity() {
 
     fun openDetails(v: View?){
         val job = v?.getTag() as Job
-        val jobDetail = JobDetail(job.id,job.product.name,job.description, job.state, job.latitude, job.longitude);
+        val jobDetail = JobDetail(job.id,job.product.name,job.description, job.state, job.direction);
         val intent = Intent(this, TaskDetails::class.java)
         intent.putExtra("product",jobDetail)
         startActivity(intent)
@@ -133,7 +133,7 @@ class Home : AppCompatActivity() {
             override fun onFailure(call: Call<Array<Job>>, t: Throwable) {
                 populateToDoJobs(context,null)
                 toDoTextView.setVisibility(View.VISIBLE)
-                toDoTextView.text = "Imposible cargar las tareas"
+                toDoTextView.text = "Imposible cargar las tareas" + t.message
             }
         })
     }
