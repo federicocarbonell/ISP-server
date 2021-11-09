@@ -8,6 +8,5 @@ data class JobDetail(
     var name: String?=null,
     var description: String?=null,
     var state: Integer?=null,
-    var latitude: Integer?=null,
-    var longitud: Integer?=null,
+    var direction: String?=null,
 ) : Serializable

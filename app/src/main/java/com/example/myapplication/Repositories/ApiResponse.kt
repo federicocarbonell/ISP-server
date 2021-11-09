@@ -17,8 +17,7 @@ data class Job(
     @SerializedName("state") var state: Integer,
     @SerializedName("description") var description: String,
     @SerializedName("time") var time: String,
-    @SerializedName("latitude") var latitude: Integer,
-    @SerializedName("longitude") var longitude: Integer,
+    @SerializedName("direction") var direction: String,
 )
 
 data class Product(
