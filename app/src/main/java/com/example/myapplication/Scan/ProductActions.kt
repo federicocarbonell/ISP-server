@@ -72,8 +72,7 @@ class ProductActions : AppCompatActivity() {
 
     fun openHistory(productId: Int){
         val intentHistory = Intent(this, History::class.java)
-        intent.putExtra("prodId", productId)
-        intent.putExtra("prodName", "Placeholder name")
+        intentHistory.putExtra("prodId", productId)
         startActivity(intentHistory)
     }
 

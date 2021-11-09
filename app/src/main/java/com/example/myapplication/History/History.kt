@@ -10,6 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Home.Home
+import com.example.myapplication.Home.TaskDetails
+import com.example.myapplication.Job
+import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.R
 import com.example.myapplication.Report
 import com.example.myapplication.Repositories.ReportRepository
@@ -30,10 +33,7 @@ class History : AppCompatActivity() {
         Log.d("history", intent.extras.toString())
         var bundle: Bundle ?= intent.extras
         var productId = bundle?.get("prodId")
-        var productName = bundle?.get("prodName")
-        val prodName: TextView = findViewById(R.id.productName) as TextView
         val prodId: TextView = findViewById(R.id.productId) as TextView
-        prodName.text = productName.toString()
         prodId.text = "Identificador: " + productId.toString()
         getReports(this);
 
@@ -94,4 +94,12 @@ class History : AppCompatActivity() {
             }
         })
     }
+/*
+    fun openDetails(v: View?){
+        val job = v?.getTag()
+        val jobDetail = JobDetail(job.id,job.product.name,job.description, job.state, job.direction);
+        val intent = Intent(this, TaskDetails::class.java)
+        intent.putExtra("product",jobDetail)
+        startActivity(intent)
+    }*/
 }

@@ -29,10 +29,6 @@ class Scan : AppCompatActivity() {
             //textView.text ="Hellow there.";
             startScanning()
         }
-        val intent = Intent(this, ProductActions::class.java)
-        intent.putExtra("productId",parseInt("1"))
-        startActivity(intent)
-
     }
 
     private fun startScanning() {

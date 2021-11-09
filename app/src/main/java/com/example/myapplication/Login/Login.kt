@@ -73,7 +73,7 @@ class Login : AppCompatActivity() {
                 }
             }
             override fun onFailure(call: Call<UserLogged>, t: Throwable) {
-                userTextView.text = "Error de conexion" ;
+                userTextView.text = "Error de conexion" + t;
             }
         })
     }
