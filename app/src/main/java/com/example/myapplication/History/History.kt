@@ -10,11 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Home.Home
-import com.example.myapplication.Home.TaskDetails
-import com.example.myapplication.Job
-import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.R
 import com.example.myapplication.Report
+import com.example.myapplication.Reports.Detail
 import com.example.myapplication.Repositories.ReportRepository
 import com.example.myapplication.Scan.Scan
 import com.example.myapplication.ServiceBuilder
@@ -55,6 +53,16 @@ class History : AppCompatActivity() {
             }
         }
     }
+
+    fun openDetails(v: View?){
+        val report = v?.getTag() as Report
+        val reportId = report.id
+        Log.d("reports", "opening details in history")
+        val intent = Intent(this, Detail::class.java)
+        intent.putExtra("reportId",reportId)
+        startActivity(intent)
+    }
+
 
     private fun populateReports(context: Context, reports: Array<Report>?){
         val reportView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.reportList) as androidx.recyclerview.widget.RecyclerView
