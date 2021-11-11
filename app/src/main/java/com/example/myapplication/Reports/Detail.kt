@@ -71,10 +71,11 @@ class Detail  : AppCompatActivity() {
                     employeeNameData.text = "Nombre empleado: " + response.body()?.employeeName
                     detailData.text = "Detalles: " + response.body()?.detail
                     commentData.text = "Comentarios:" + response.body()?.comment
-                    /*
+
                     var image: ImageView = findViewById<ImageView>(R.id.image)
-                    if (response.body()?.images?.get(0) != null) {
+
                         val base64String = response.body()?.images?.get(0)
+                    Log.d("image", base64String.toString())
                         val base64Image = base64String?.split(",".toRegex())?.toTypedArray()?.get(1)
 
                         val decodedString: ByteArray = Base64.decode(base64Image, Base64.DEFAULT)
@@ -82,8 +83,8 @@ class Detail  : AppCompatActivity() {
                             BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
 
                         image.setImageBitmap(decodedByte)
-                    }
-                    */
+
+
                 } else {
                     Log.d("reportdetail", response.message())
                     errorData.text = response.message().toString()

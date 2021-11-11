@@ -41,6 +41,6 @@
             android:name=".History.History"
             android:exported="true" />
         <activity android:name=".Footer.Footer"></activity>
+        <activity android:name=".Reports.Detail" android:exported="true" ></activity>
     </application>
-
 </manifest>
