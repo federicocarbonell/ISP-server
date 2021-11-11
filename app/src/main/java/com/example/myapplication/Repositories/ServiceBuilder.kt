@@ -7,13 +7,18 @@ import java.security.cert.X509Certificate
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
+import com.example.myapplication.Repositories.AuthorizationInterceptor
+import okhttp3.Interceptor
+import okhttp3.Response
 
 object ServiceBuilder {
-    private val client = OkHttpClient.Builder().build()
+
+    private val client = OkHttpClient.Builder()
+        .addInterceptor { chan -> AuthorizationInterceptor().intercept(chan) }
+        .build();
 
     private val retrofit = Retrofit.Builder()
         .baseUrl("https://10.0.2.2:5001/api/")
-        //.baseUrl("http://192.168.235.249:5000/api/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(getUnsafeOkHttpClient())
         .build()
@@ -44,5 +49,4 @@ object ServiceBuilder {
             .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
             .hostnameVerifier { _, _ -> true }.build()
     }
-
 }

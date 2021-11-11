@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName
 data class UserLogged(
     @SerializedName("id") var id: Integer,
     @SerializedName("name") var name: String,
+    @SerializedName("token") var token: String
 )
 
 data class Job(
