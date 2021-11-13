@@ -24,13 +24,12 @@ import retrofit2.Response
 class History : AppCompatActivity() {
     private var layoutManagerReports: RecyclerView.LayoutManager? = null
     private var reportAdapter: RecyclerView.Adapter<RecyclerAdapter.ViewHolder>? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report_list)
         Log.d("history", intent.extras.toString())
         var bundle: Bundle ?= intent.extras
-        var productId = bundle?.get("prodId")
+        var productId = Integer.parseInt(bundle?.get("prodId").toString())
         val prodId: TextView = findViewById(R.id.productId) as TextView
         prodId.text = "Identificador: " + productId.toString()
         getReports(this);
@@ -57,9 +56,8 @@ class History : AppCompatActivity() {
     fun openDetails(v: View?){
         val report = v?.getTag() as Report
         val reportId = report.id
-        Log.d("reports", "opening details in history")
         val intent = Intent(this, Detail::class.java)
-        intent.putExtra("reportId",reportId)
+        intent.putExtra("reportId", reportId)
         startActivity(intent)
     }
 

@@ -10,6 +10,6 @@ import retrofit2.http.*
 interface ReportRepository {
     @GET("report/{productId}")
     fun getProductReports(@Path("productId") productId: Int): Call<Array<Report>>
-    @GET("report/{reportId}/product/{productId}")
-    fun getReportDetail(@Path("productId") productId: Int, @Path("reportId") reportId: Int): Call<Report>
+    @GET("report/details/{reportId}")
+    fun getReportDetail( @Path("reportId") reportId: Int): Call<Report>
 }

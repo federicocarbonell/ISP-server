@@ -36,5 +36,5 @@ data class Report(
     @SerializedName("summary") var summary: String,
     @SerializedName("detail") var detail: String,
     @SerializedName("comment") var comment: String,
-    @SerializedName("images") var images: List<String>,
+    @SerializedName("image") var image: String,
 )

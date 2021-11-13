@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:textSize="25dp"
-            android:text="DETALLES"></TextView>
+            android:text="Detalles del reporte"></TextView>
         <TextView
             android:id="@+id/productName"
             android:layout_width="match_parent"
@@ -32,11 +32,6 @@
             android:id="@+id/visitDate"
             android:layout_width="match_parent"
             android:layout_margin="3dp"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"></TextView>
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="15dp"></TextView>
         <TextView

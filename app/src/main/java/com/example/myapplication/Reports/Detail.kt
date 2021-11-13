@@ -22,6 +22,7 @@ import android.graphics.BitmapFactory
 import android.graphics.Bitmap
 import android.util.Base64
 import android.widget.ImageView
+import java.lang.Integer.parseInt
 
 
 class Detail  : AppCompatActivity() {
@@ -29,11 +30,8 @@ class Detail  : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report_details)
         var bundle: Bundle ?= intent.extras
-        var productId = bundle?.get("reportId")
-        Log.d("reports", "coming from intent" + productId)
-        var title: TextView = findViewById(R.id.title) as TextView
-        title.text = "Id producto " + productId
-        getReportDetails();
+        var reportId = bundle?.get("reportId")
+        getReportDetails(parseInt(reportId.toString()));
 
         val bottom_navigation: BottomNavigationView = findViewById(R.id.bottom_navigation) as BottomNavigationView
         val intentHome = Intent(this, Home::class.java)
@@ -54,9 +52,9 @@ class Detail  : AppCompatActivity() {
         }
     }
 
-    private fun getReportDetails(){
+    private fun getReportDetails(reportId:Int){
         val request = ServiceBuilder.buildService(ReportRepository::class.java)
-        val call = request.getReportDetail(1, 4)
+        val call = request.getReportDetail(reportId)
         call.enqueue(object: Callback<Report> {
             val productNameData: TextView = findViewById(R.id.productName) as TextView
             val visitDateData: TextView = findViewById(R.id.visitDate) as TextView
@@ -74,19 +72,16 @@ class Detail  : AppCompatActivity() {
 
                     var image: ImageView = findViewById<ImageView>(R.id.image)
 
-                        val base64String = response.body()?.images?.get(0)
-                    Log.d("image", base64String.toString())
+                    val base64String = response.body()?.image
+                    if (base64String != null) {
                         val base64Image = base64String?.split(",".toRegex())?.toTypedArray()?.get(1)
 
                         val decodedString: ByteArray = Base64.decode(base64Image, Base64.DEFAULT)
                         val decodedByte =
                             BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
-
                         image.setImageBitmap(decodedByte)
-
-
+                    }
                 } else {
-                    Log.d("reportdetail", response.message())
                     errorData.text = response.message().toString()
                 }
             }
