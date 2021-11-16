@@ -78,6 +78,7 @@ class ProductActions : AppCompatActivity() {
     fun openHistory(productId: Int){
         val intentHistory = Intent(this, History::class.java)
         intentHistory.putExtra("prodId", productId)
+        intentHistory.putExtra("prodName", prodName)
         startActivity(intentHistory)
     }
 
@@ -95,6 +96,7 @@ class ProductActions : AppCompatActivity() {
     fun chargeProductInfo(product: Product){
         val productName: TextView = findViewById(R.id.productName) as TextView
         productName.text = product.name;
+        prodName = product.name;
         val productId: TextView = findViewById(R.id.productId) as TextView
         productId.text = "Identificador: " + product.id.toString();
         val productYear: TextView = findViewById(R.id.productYear) as TextView
