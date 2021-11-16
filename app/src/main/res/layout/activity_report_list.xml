@@ -8,22 +8,28 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:background="@color/white"
-    android:clickable="true"
     android:focusableInTouchMode="true" >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_gravity="center"
         android:layout_weight="1"
         android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:text="HISTORIAL DE REPORTES"
+        android:textSize="20dp"
+        android:gravity="center"/>
         <TextView
-        android:id="@+id/productName"
-        android:layout_width="319dp"
-        android:layout_height="68dp"
-        android:gravity="center"
-        android:padding="10sp"
-        android:fontWeight="700"
-        android:textSize="30dp"></TextView>
+            android:id="@+id/productName"
+            android:layout_width="319dp"
+            android:layout_height="68dp"
+            android:gravity="center"
+            android:padding="10sp"
+            android:fontWeight="700"
+            android:textSize="30dp"></TextView>
         <TextView
             android:id="@+id/productId"
             android:layout_width="319dp"
@@ -32,29 +38,16 @@
             android:padding="2sp"
             android:fontWeight="700"
             android:textSize="25dp"></TextView>
-        <TextView
-            android:id="@+id/productYear"
-            android:layout_width="319dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:padding="2sp"
-            android:fontWeight="700"
-            android:textSize="25dp"></TextView>
-
-        <Button
-            android:id="@+id/buttonHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Ver historial de tareas"
-            />
-        <Button
-            android:id="@+id/buttonUploadReport"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Cargar reporte"
-            />
+    <TextView
+        android:id="@+id/notToDoJobs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:textSize="15dp"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reportList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
     </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

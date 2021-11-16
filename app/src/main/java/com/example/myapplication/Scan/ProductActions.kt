@@ -3,8 +3,10 @@ package com.example.myapplication.Scan
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.myapplication.History.History
 import com.example.myapplication.Home.Home
 import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.Product
@@ -17,17 +19,19 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class ProductActions : AppCompatActivity() {
+    private var productId = -1;
+    private var prodName = "";
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_actions)
         var bundle: Bundle ?= intent.extras
-        var productId = bundle?.get("productId") as Int
+        productId = bundle?.get("productId") as Int
         getProductInfo(productId)
-
+        var historyBtn = findViewById(R.id.buttonHistory) as Button
         val bottom_navigation: BottomNavigationView = findViewById(R.id.bottom_navigation) as BottomNavigationView
         val intentHome = Intent(this, Home::class.java)
         val intentScan = Intent(this, Scan::class.java)
-
         bottom_navigation.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
@@ -40,6 +44,9 @@ class ProductActions : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+        historyBtn.setOnClickListener {
+            openHistory(productId)
         }
     }
 
@@ -61,6 +68,12 @@ class ProductActions : AppCompatActivity() {
             }
 
         })
+    }
+
+    fun openHistory(productId: Int){
+        val intentHistory = Intent(this, History::class.java)
+        intentHistory.putExtra("prodId", productId)
+        startActivity(intentHistory)
     }
 
     fun showError(){
