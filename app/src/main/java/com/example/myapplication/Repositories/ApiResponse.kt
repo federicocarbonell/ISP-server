@@ -38,3 +38,13 @@ data class Report(
     @SerializedName("comment") var comment: String,
     @SerializedName("image") var image: String,
 )
+
+data class ReportToAdd(
+    @SerializedName("productId") var productId: Integer,
+    @SerializedName("productId") var productName: String,
+    @SerializedName("arrivedTime") var arrivedTime: String,
+    @SerializedName("summary") var summary: String,
+    @SerializedName("detail") var detail: String,
+    @SerializedName("comment") var comment: String,
+    @SerializedName("image") var image: String,
+)
