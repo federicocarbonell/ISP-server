@@ -11,6 +11,7 @@ import com.example.myapplication.Home.Home
 import com.example.myapplication.Models.JobDetail
 import com.example.myapplication.Product
 import com.example.myapplication.R
+import com.example.myapplication.Reports.CreateReport
 import com.example.myapplication.Repositories.ProductRepository
 import com.example.myapplication.ServiceBuilder
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -29,6 +30,7 @@ class ProductActions : AppCompatActivity() {
         productId = bundle?.get("productId") as Int
         getProductInfo(productId)
         var historyBtn = findViewById(R.id.buttonHistory) as Button
+        var createBtn = findViewById(R.id.buttonUploadReport) as Button
         val bottom_navigation: BottomNavigationView = findViewById(R.id.bottom_navigation) as BottomNavigationView
         val intentHome = Intent(this, Home::class.java)
         val intentScan = Intent(this, Scan::class.java)
@@ -47,6 +49,9 @@ class ProductActions : AppCompatActivity() {
         }
         historyBtn.setOnClickListener {
             openHistory(productId)
+        }
+        createBtn.setOnClickListener{
+            createReport(productId)
         }
     }
 
@@ -74,6 +79,12 @@ class ProductActions : AppCompatActivity() {
         val intentHistory = Intent(this, History::class.java)
         intentHistory.putExtra("prodId", productId)
         startActivity(intentHistory)
+    }
+
+    fun createReport(productId: Int){
+        val intentCreate = Intent(this, CreateReport::class.java)
+        intentCreate.putExtra("prodId", productId)
+        startActivity(intentCreate)
     }
 
     fun showError(){
