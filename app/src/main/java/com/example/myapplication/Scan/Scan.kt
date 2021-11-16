@@ -25,13 +25,8 @@ class Scan : AppCompatActivity() {
             PackageManager.PERMISSION_DENIED){
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), 123)
         }else{
-            //val textView = findViewById<TextView>(R.id.text_id)
-            //textView.text ="Hellow there.";
             startScanning()
         }
-        val intent = Intent(this, ProductActions::class.java)
-        intent.putExtra("productId",parseInt("1"))
-        startActivity(intent)
     }
 
     private fun startScanning() {
@@ -47,7 +42,6 @@ class Scan : AppCompatActivity() {
 
         codescanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-                //Toast.makeText(this, "Product scanned successfully.", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, ProductActions::class.java)
                 intent.putExtra("productId",parseInt(it.text))
                 startActivity(intent)

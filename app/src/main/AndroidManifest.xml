@@ -17,6 +17,10 @@
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Reports.CreateReport"
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing"/>
+        <activity
             android:name=".Scan.ProductActions"
             android:exported="true" />
         <activity

@@ -19,25 +19,58 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
-        android:text="HISTORIAL DE REPORTES"
-        android:textSize="20dp"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:text="Historial de reportes"
         android:gravity="center"/>
-        <TextView
-            android:id="@+id/productName"
-            android:layout_width="319dp"
-            android:layout_height="68dp"
-            android:gravity="center"
-            android:padding="10sp"
-            android:fontWeight="700"
-            android:textSize="30dp"></TextView>
-        <TextView
-            android:id="@+id/productId"
-            android:layout_width="319dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:padding="2sp"
-            android:fontWeight="700"
-            android:textSize="25dp"></TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/productNameLabel"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:padding="10sp"
+                android:fontWeight="700"
+                android:textStyle="bold"
+                android:text="Producto:"
+                android:textSize="20dp"></TextView>
+            <TextView
+                android:id="@+id/productName"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:padding="10sp"
+                android:fontWeight="700"
+                android:text="Heladera"
+                android:textSize="18dp"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/productIdLabel"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:padding="2sp"
+                android:fontWeight="700"
+                android:textStyle="bold"
+                android:text="Identificador:"
+                android:textSize="20dp"></TextView>
+            <TextView
+                android:id="@+id/productId"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:padding="2sp"
+                android:fontWeight="700"
+                android:text="1"
+                android:textSize="18dp"></TextView>
+        </LinearLayout>
     <TextView
         android:id="@+id/notToDoJobs"
         android:layout_width="match_parent"

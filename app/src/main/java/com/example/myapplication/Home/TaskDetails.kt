@@ -34,7 +34,7 @@ class TaskDetails : AppCompatActivity() {
         titleText.text = job.name
         val descriptionText: TextView = findViewById(R.id.description) as TextView
         descriptionText.text = job.description
-
+      
         val direcitonText: TextView = findViewById(R.id.direction) as TextView
         direcitonText.text = job.direction.toString()
         spinner = findViewById(R.id.spinner)

@@ -30,8 +30,11 @@ class History : AppCompatActivity() {
         Log.d("history", intent.extras.toString())
         var bundle: Bundle ?= intent.extras
         var productId = Integer.parseInt(bundle?.get("prodId").toString())
+        var productName = bundle?.get("prodName").toString()
         val prodId: TextView = findViewById(R.id.productId) as TextView
-        prodId.text = "Identificador: " + productId.toString()
+        prodId.text = productId.toString()
+        val prodName: TextView = findViewById(R.id.productName) as TextView
+        prodName.text = productName
         getReports(this);
 
         val bottom_navigation: BottomNavigationView = findViewById(R.id.bottom_navigation) as BottomNavigationView
@@ -61,7 +64,6 @@ class History : AppCompatActivity() {
         startActivity(intent)
     }
 
-
     private fun populateReports(context: Context, reports: Array<Report>?){
         val reportView: androidx.recyclerview.widget.RecyclerView = findViewById(R.id.reportList) as androidx.recyclerview.widget.RecyclerView
         if(reports == null){
@@ -74,7 +76,6 @@ class History : AppCompatActivity() {
             reportView.adapter = reportAdapter
         }
     }
-
 
     private fun getReports(context: Context){
         val request = ServiceBuilder.buildService(ReportRepository::class.java)
@@ -100,12 +101,4 @@ class History : AppCompatActivity() {
             }
         })
     }
-/*
-    fun openDetails(v: View?){
-        val job = v?.getTag()
-        val jobDetail = JobDetail(job.id,job.product.name,job.description, job.state, job.direction);
-        val intent = Intent(this, TaskDetails::class.java)
-        intent.putExtra("product",jobDetail)
-        startActivity(intent)
-    }*/
 }

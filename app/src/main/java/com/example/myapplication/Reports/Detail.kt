@@ -52,6 +52,14 @@ class Detail  : AppCompatActivity() {
         }
     }
 
+    fun decode(imageString: String) {
+        var image: ImageView = findViewById<ImageView>(R.id.image)
+        // Decode base64 string to image
+        val imageBytes = Base64.decode(imageString, Base64.DEFAULT)
+        val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+        image.setImageBitmap(decodedImage)
+    }
+
     private fun getReportDetails(reportId:Int){
         val request = ServiceBuilder.buildService(ReportRepository::class.java)
         val call = request.getReportDetail(reportId)
@@ -64,22 +72,17 @@ class Detail  : AppCompatActivity() {
             val errorData: TextView = findViewById(R.id.error) as TextView
             override fun onResponse(call: Call<Report>, response: Response<Report>) {
                 if (response.code() == 200) {
-                    productNameData.text = "Nombre producto: " + response.body()?.productName
-                    visitDateData.text = "Fecha de visita: " + response.body()?.visitDate
-                    employeeNameData.text = "Nombre empleado: " + response.body()?.employeeName
-                    detailData.text = "Detalles: " + response.body()?.detail
-                    commentData.text = "Comentarios:" + response.body()?.comment
+                    productNameData.text = response.body()?.productName
+                    visitDateData.text = response.body()?.visitDate
+                    employeeNameData.text = response.body()?.employeeName
+                    detailData.text = response.body()?.detail
+                    commentData.text = response.body()?.comment
 
                     var image: ImageView = findViewById<ImageView>(R.id.image)
 
                     val base64String = response.body()?.image
                     if (base64String != null) {
-                        val base64Image = base64String?.split(",".toRegex())?.toTypedArray()?.get(1)
-
-                        val decodedString: ByteArray = Base64.decode(base64Image, Base64.DEFAULT)
-                        val decodedByte =
-                            BitmapFactory.decodeByteArray(decodedString, 0, decodedString.size)
-                        image.setImageBitmap(decodedByte)
+                        decode(base64String);
                     }
                 } else {
                     errorData.text = response.message().toString()
