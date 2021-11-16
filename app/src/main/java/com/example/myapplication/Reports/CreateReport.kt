@@ -15,10 +15,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import com.example.myapplication.Home.Home
 import com.example.myapplication.Models.ReportModel
 import com.example.myapplication.R
 import com.example.myapplication.Repositories.ReportRepository
+import com.example.myapplication.Scan.Scan
 import com.example.myapplication.ServiceBuilder
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,6 +52,24 @@ class CreateReport : AppCompatActivity() {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery, pickImage)
         }
+
+        val bottom_navigation: BottomNavigationView = findViewById(R.id.bottom_navigation) as BottomNavigationView
+        val intentHome = Intent(this, Home::class.java)
+        val intentScan = Intent(this, Scan::class.java)
+
+        bottom_navigation.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.home -> {
+                    startActivity(intentHome);
+                    true
+                }
+                R.id.camera -> {
+                    startActivity(intentScan);
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     fun obtainReportModel () : ReportModel {
@@ -67,7 +88,7 @@ class CreateReport : AppCompatActivity() {
         val call = request.createReport(1, report);
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.code() != 400 || response.code() != 500){
+                if (response.code() == 200){
                     Toast.makeText(this@CreateReport, "Reporte agregado exitosamente.", Toast.LENGTH_LONG).show()
                 } else {
                     Toast.makeText(this@CreateReport, "Ocurrio un problema, por favor intente nuevamente.", Toast.LENGTH_LONG).show()
@@ -96,7 +117,6 @@ class CreateReport : AppCompatActivity() {
         val imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT)
         return imageString
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
