@@ -85,7 +85,7 @@ class CreateReport : AppCompatActivity() {
 
     fun createReport (productId: Int, report: ReportModel) {
         val request = ServiceBuilder.buildService(ReportRepository::class.java)
-        val call = request.createReport(1, report);
+        val call = request.createReport(productId, report);
         call.enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.code() == 200){

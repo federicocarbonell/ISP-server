@@ -25,7 +25,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingTop="5dp"
-                android:text="HOME"
+                android:text="Inicio"
+                android:textStyle="bold"
                 android:textSize="20dp" />
 
             <TextView
@@ -33,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Tareas en proceso:"
+                android:textStyle="bold"
                 android:textSize="15dp" />
 
             <TextView
@@ -52,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Tareas pendientes:"
+                android:textStyle="bold"
                 android:textSize="15dp" />
 
             <TextView
@@ -71,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Tareas realizadas:"
+                android:textStyle="bold"
                 android:textSize="15dp" />
 
             <TextView
